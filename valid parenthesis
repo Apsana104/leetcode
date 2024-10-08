@@ -1,0 +1,29 @@
+lass Solution:
+    def isValid(self, s: str) -> bool:
+        
+        t=0
+        while(t<len(s)-1 and len(s)!=1):
+            if(t==-1):
+                t=0
+            if(s[t] not in "({["):
+                return False
+            else:
+                if(s[t+1] not in "{[(" ):
+                    if(s[t]=='(' and s[t+1]!=')'):
+                        return False
+                    elif(s[t]=='{' and s[t+1]!='}'):
+                        return False
+                    elif(s[t]=='[' and s[t+1]!=']'):
+                        return False
+                    else:
+                        s=s[:t]+s[t+2:]
+                        t=t-1
+                else:
+                    t+=1
+        if(s):
+            return False
+        else:
+            return True
+
+                
+        
